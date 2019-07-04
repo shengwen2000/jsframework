@@ -1,9 +1,56 @@
 <div class="container">
-    <header class="pageHeader">
-        <h3><i class="fa fa-shopping-cart fa-lg page-caption" aria-hidden="true"></i> {{'pageHeader.Orders' | translate}}</h3>
-    </header>
+  <header class="pageHeader">
+    <h3><i class="fa fa-shopping-cart fa-lg page-caption" aria-hidden="true"></i> {{'pageHeader.Orders' | translate}}</h3>
+  </header>
 
-    <div [@fadeInOut]>
-        <span class="text-muted">-- Sample Page --</span>
-    </div>
+  <div [@fadeInOut]>
+    <span class="text-muted">-- Sample Page --</span>
+  </div>
+
+
+  <input [(ngModel)]="Name" >  {{Name}}
+
+  <hr/>
+
+  {{Message}}
+
+  <button (click)="sayHello()">add message</button>
+
+  <hr/>
+
+  <div [hidden]="EditRecord">
+      <input [(ngModel)]="Msg" >
+      <button (click)="add(Msg)">add</button>
+      <table>
+        <tr>
+          <td>Id</td>
+          <td>Name</td>
+          <td></td>
+        </tr>
+        <tr *ngFor="let x of AA; let idx = index">
+            <td>{{x.Id}}</td>
+            <td>{{x.Message}}</td>
+            <td>
+                <button (click)="edit(x)">Edit</button>
+                <button (click)="remove(idx, x)">Remove</button>
+            </td>
+        </tr>
+      </table>
+  </div>
+
+  <hr/>
+
+  <div *ngIf="EditRecord" >
+    <label>id</label>
+    {{EditRecord.Id}}
+    <br/>
+    <label>message</label>
+    <br/>
+    <input type="text" [(ngModel)]="EditRecord.Message">
+    <button (click)="saveEdit()">Save</button>
+    <button (click)="cancelEdit()">Cancel</button>
+  </div>
+
+
+
 </div>
