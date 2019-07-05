@@ -32,6 +32,7 @@
     "@angular/router": "~7.2.0",
     "@ngx-translate/core": "^11.0.1",
     "@swimlane/ngx-datatable": "^14.0.0",
+
     "bootstrap": "^4.3.1",
     "bootstrap-datepicker": "^1.8.0",
     "bootstrap-select": "^1.13.8",
@@ -59,6 +60,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/jquery": "^3.3.29",
     "@types/node": "~8.9.4",
+    "@types/bootstrap": "^4.3.0",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",

@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
 })
 export class Demo001Component {
 
-
+  showDialog() {
+    $('#modelId').modal('show');
+  }
 }
