@@ -63,8 +63,7 @@ import { UsersManagementComponent } from './components/controls/users-management
 import { RolesManagementComponent } from './components/controls/roles-management.component';
 import { RoleEditorComponent } from './components/controls/role-editor.component';
 import { HelloComponent } from './components/hello/hello.component';
-
-
+import { Demo001Component } from './components/demo001/demo001.component';
 
 
 @NgModule({
@@ -112,7 +111,8 @@ import { HelloComponent } from './components/hello/hello.component';
     BootstrapToggleDirective,
     BootstrapSelectDirective,
     BootstrapDatepickerDirective,
-    GroupByPipe
+    GroupByPipe,
+    Demo001Component
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },

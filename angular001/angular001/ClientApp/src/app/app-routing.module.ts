@@ -18,6 +18,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { Utilities } from './services/utilities';
 import { HelloComponent } from './components/hello/hello.component';
+import { Demo001Component } from './components/demo001/demo001.component';
 
 
 
@@ -51,6 +52,7 @@ const routes: Routes = [
   { path: 'settings', component: SettingsComponent, canActivate: [AuthGuard], data: { title: 'Settings' } },
   { path: 'about', component: AboutComponent, data: { title: 'About Us' } },
   { path: 'hello', component: HelloComponent, data: { title: 'Hello' } },
+  { path: 'demo001', component: Demo001Component, data: { title: 'demo001' } },
   { path: 'home', redirectTo: '/', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent, data: { title: 'Page Not Found' } }
 ];

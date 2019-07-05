@@ -10,7 +10,7 @@ import { fadeInOut } from '../../services/animations';
 import { Listener } from 'selenium-webdriver';
 
 @Component({
-    selector: 'hello',
+    selector: 'app-hello',
     templateUrl: './hello.component.html',
     styleUrls: ['./hello.component.scss'],
     animations: [fadeInOut]
