@@ -1,4 +1,7 @@
 import { Component, Directive, HostListener, Input, EventEmitter, Output } from '@angular/core';
+import * as $ from 'jquery';
+import "bootstrap";
+
 import { window } from 'rxjs/operators';
 
 @Component({
@@ -11,7 +14,7 @@ export class Demo001Component {
   Message = '';
 
   showDialog() {
-    $('#modelId').modal('show');
+    $('#modelId').modal("show");
   }
 
   deleteAll() {
