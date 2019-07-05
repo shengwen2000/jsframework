@@ -8,49 +8,96 @@
   </div>
 
 
-  <input [(ngModel)]="Name" >  {{Name}}
+  <input [(ngModel)]="Name">  {{Name}}
 
-  <hr/>
+  <hr />
 
   {{Message}}
 
-  <button (click)="sayHello()">add message</button>
+  <button class="btn btn-outline-info" (click)="sayHello()">add message</button>
 
-  <hr/>
+  <hr />
 
-  <div [hidden]="EditRecord">
-      <input [(ngModel)]="Msg" >
-      <button (click)="add(Msg)">add</button>
-      <table>
-        <tr>
-          <td>Id</td>
-          <td>Name</td>
-          <td></td>
-        </tr>
-        <tr *ngFor="let x of AA; let idx = index">
-            <td>{{x.Id}}</td>
-            <td>{{x.Message}}</td>
-            <td>
-                <button (click)="edit(x)">Edit</button>
-                <button (click)="remove(idx, x)">Remove</button>
-            </td>
-        </tr>
-      </table>
+  <div>
+    <input [(ngModel)]="Msg">
+    <button class="btn btn-outline-info" (click)="add(Msg)">Add</button>&nbsp;
+    <button class="btn btn-outline-info" (click)="orderby()">Orderby</button>
+
+
+
+
+    <table class="table">
+      <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td></td>
+      </tr>
+      <ng-container *ngFor="let x of AA; let idx = index">
+          <tr>
+              <td>{{x.Id}}</td>
+              <td>{{x.Message}}</td>
+              <td>
+                <button class="btn btn-outline-info" (click)="edit(x)">Edit</button>
+                <button class="btn btn-outline-info" (click)="remove(idx, x)">Remove</button>
+              </td>
+          </tr>
+          <tr *ngIf="x.$EditRow">
+              <td colspan="3">
+                  <ng-container *ngTemplateOutlet="item; context: {x : x.$EditRow}"></ng-container>
+              </td>
+          </tr>
+      </ng-container>
+    </table>
   </div>
 
-  <hr/>
+  <hr />
 
-  <div *ngIf="EditRecord" >
-    <label>id</label>
-    {{EditRecord.Id}}
-    <br/>
-    <label>message</label>
-    <br/>
-    <input type="text" [(ngModel)]="EditRecord.Message">
-    <button (click)="saveEdit()">Save</button>
-    <button (click)="cancelEdit()">Cancel</button>
-  </div>
+  <!-- 編輯樣板 -->
+  <ng-template #item let-x="x">
+
+      <div class="card">
+          <div class="card-header">Edit</div>
+          <div class="card-body">
+
+            <div class="form-group">
+                <label>ID</label>
+                <p class="form-text text-muted">
+                  {{x.Id}}
+                </p>
+              </div>
+
+            <div class="form-group">
+              <label>訊息</label>
+              <input type="text" [(ngModel)]="x.Message"
+                class="form-control" aria-describedby="helpId" placeholder="">
+                <small id="helpId" class="form-text text-muted">Help text</small>
+            </div>
+
+          </div>
+          <div class="card-footer">
+              <button class="btn btn-outline-info" (click)="saveEdit(x)">Save</button>
+              <button class="btn btn-outline-info" (click)="cancelEdit(x)">Cancel</button>
+          </div>
+        </div>
+  </ng-template>
 
 
+  <hr>
+  <h2>Template</h2>
+
+  <ng-template [ngIf]="true">
+    Hello Template {{ Name }}
+  </ng-template>
+
+  <ng-container *ngTemplateOutlet="tmp1; context: { x: {id:'1', name:'david'}}"></ng-container>
+
+  <ng-container *ngTemplateOutlet="tmp1; context: { x: Ctx}"></ng-container>
+
+  <ng-template #tmp1 let-x = "x">
+      <div>
+        Id = '{{x.id}}'
+        Name = '{{x.name}}'
+      </div>
+  </ng-template>
 
 </div>

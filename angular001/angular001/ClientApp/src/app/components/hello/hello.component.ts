@@ -1,4 +1,5 @@
 import { filter } from 'rxjs/operators';
+import { asEnumerable } from 'linq-es2015';
 // =============================
 // Email: info@ebenmonney.com
 // www.ebenmonney.com/templates
@@ -6,6 +7,7 @@ import { filter } from 'rxjs/operators';
 
 import { Component } from '@angular/core';
 import { fadeInOut } from '../../services/animations';
+import { Listener } from 'selenium-webdriver';
 
 @Component({
     selector: 'hello',
@@ -24,8 +26,9 @@ export class HelloComponent {
 
   Msg = '';
 
-  /** the record for edit */
-  EditRecord: IRecord = null;
+  OrderAsc = false;
+
+  Ctx = {id: '1', name: 'david' };
 
   constructor() {
     this.add('a');
@@ -52,22 +55,32 @@ export class HelloComponent {
 
   edit(record: IRecord)
   {
-    this.EditRecord = Object.assign({}, record);
+    record.$EditRow = Object.assign({}, record);
   }
 
-  saveEdit() {
-    const old = this.AA.filter(x => x.Id === this.EditRecord.Id)[0];
-    Object.assign(old, this.EditRecord);
-    this.EditRecord = null;
+  saveEdit(record: IRecord) {
+    const a = asEnumerable(this.AA).FirstOrDefault(x => x.Id === record.Id);
+    Object.assign(a, record);
+    a.$EditRow = null;
   }
 
-  cancelEdit(){
-    this.EditRecord = null;
+  cancelEdit(record: IRecord) {
+    const a = asEnumerable(this.AA).FirstOrDefault(x => x.Id === record.Id);
+    a.$EditRow = null;
   }
 
+  orderby() {
+    if (this.OrderAsc) {
+      this.AA = asEnumerable(this.AA).OrderBy(x => x.Message).ToArray();
+    } else {
+      this.AA = asEnumerable(this.AA).OrderByDescending(x => x.Message).ToArray();
+    }
+    this.OrderAsc = !this.OrderAsc;
+  }
 }
 
 interface IRecord {
   Id: number;
   Message: string;
+  $EditRow?: IRecord;
 }
