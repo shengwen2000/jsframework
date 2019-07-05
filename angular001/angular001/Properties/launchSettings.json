@@ -15,6 +15,13 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
+    "IIS Express_prod": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
+      }
+    },
     "angular001": {
       "commandName": "Project",
       "launchBrowser": true,
