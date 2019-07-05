@@ -31,3 +31,12 @@
     </div>
   </div>
 </div>
+
+<hr/>
+<button class="btn btn-outline-primary" (click)="deleteAll()">Delete All</button>&nbsp;
+<button class="btn btn-outline-primary" appConfirm (yes)="deleteAll()">Delete All2</button>&nbsp;
+
+<div class="alert alert-primary" role="alert" *ngIf="Message">
+  <strong>warning</strong>
+  {{Message}}
+</div>

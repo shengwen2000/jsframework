@@ -1,3 +1,4 @@
+import { AppConfirmDirective } from './components/demo001/demo001.component';
 // =============================
 // Email: info@ebenmonney.com
 // www.ebenmonney.com/templates
@@ -112,7 +113,8 @@ import { Demo001Component } from './components/demo001/demo001.component';
     BootstrapSelectDirective,
     BootstrapDatepickerDirective,
     GroupByPipe,
-    Demo001Component
+    Demo001Component,
+    AppConfirmDirective
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },
